@@ -102,3 +102,15 @@ This challenge is not about code. You do not have to write any code. But read th
 - After we implemented the "load 5/10/15" buttons, we found out, that when the user clicked the buttons multiple times, the API was crashing under the load of too many requests. Prepare an idea (or multiple?) how to prevent the user from sending too many requests to the API. Bring your ideas in "words" / bullet points to the interview. (no code needed)
 - After we deploy our nice website, we found out, that we have some accessibility issues. Can you find some issues about accessability and do you know how to address them? What can we do to make our site more accessible. (Please do not change your code at this point. We never had Accessibility as a requirement, so it's OK to have these issues)
 - Think about the current state of the application. What did the client forget? What issues or ideas do you have as a developer, to make the site more stable and robust. We will discuss.
+
+
+##### Improvements (Mannar)
+1- I'd extract the fetching method to its own service/file and import it in the component (advantage: re-use it by another component). Also Vuex could be used here if there are lots of communicating between parent and children components.
+
+2- I would extract the components style (btn, section, row) to their own stylesheet files ( modular structre)
+
+3- for mouse-hater people, i'd double check the app using keyboard only (navigating through hitting tab only) and tweet the tabIndex
+
+4- I would make a child and extract the article (the quote card) into its own child component (i.e ListItem) => cleaner List.vue
+
+5- that's all i could think of. for now :)
