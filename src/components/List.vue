@@ -3,9 +3,11 @@
   <div class="text-center">
       <h1 class="text-xl my-8">Simpson Quotes</h1>
 
+      <!-- the child components need the data to sort it, 
+      so i passed it through props-->
       <section>
-        <SortButton direction="up" text="Sort ascending"/>
-        <SortButton direction="down" text="Sort descending"/>
+        <SortButton direction="up" text="Sort ascending" :data="APIQuotes" @sorted="sort"/>
+        <SortButton direction="down" text="Sort descending" :data="APIQuotes" @sorted="sort"/>
       </section>
       <section>
         <div class="row">
@@ -13,7 +15,7 @@
           <article
           v-for="quote in APIQuotes"
           :key="quote._id"
-          class="bg-gradient-to-br from-gray-200 rounded-lg shadow w-64"
+          class="bg-gradient-to-br from-gray-200 rounded-lg shadow w-64 flex items-center justify-center h-full"
           >
             <figure class="flex-1 flex flex-col p-8">
               <img 
@@ -65,6 +67,9 @@ export default {
     loadQuotesCount(num) {
       this.count = +num;
       this.fetchData(this.apiUrl, this.count);
+    },
+    sort(payload) {
+      this.APIQuotes= payload;
     }
   },
   created() {
