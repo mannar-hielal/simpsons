@@ -1,7 +1,6 @@
 <template>
     <button 
     class="btn" 
-    :class="[sortedQuotes ?'active': '']"
     @click="sort">-{{ text }}-</button>
 </template>
 <script>
@@ -30,7 +29,12 @@ export default {
     sort() {
       console.log(this.data);
       this.direction === "up" ? this.sortAsc() : this.sortDesc();
-      this.$emit("sorted", this.sortedQuotes);
+      this.$emit("sorted", 
+      {
+        sortedQuotes:  this.sortedQuotes,
+        direction: this.direction
+      }); 
+
     },
     sortAsc() {
       this.sortedQuotes = this.data.sort((a,b)=> a.character.localeCompare(b.character));
@@ -42,8 +46,3 @@ export default {
   }
 }
 </script>
-<style>
-.btn.active {
-  background-color: darkblue;
-}
-</style>

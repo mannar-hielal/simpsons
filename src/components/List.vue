@@ -7,9 +7,17 @@
       <!-- the child components need the data to sort it, 
       so i passed it through props-->
       <section>
-        <SortButton direction="up" text="Sort ascending" :data="APIQuotes" @sorted="sort"/>
-        <SortButton direction="down" text="Sort descending" :data="APIQuotes" @sorted="sort"/>
+        <SortButton direction="up" text="Sort ascending" :data="APIQuotes" 
+        @sorted="sort"
+        :class="[direction === 'up' ? 'active': '']">
+        </SortButton>
+
+        <SortButton direction="down" text="Sort descending" :data="APIQuotes" 
+        @sorted="sort" 
+        :class="[direction === 'down' ? 'active': '']">
+      </SortButton>
       </section>
+
       <section>
         <div class="row">
           <!-- Use semantic markup: article, figure-->
@@ -40,7 +48,7 @@
           <button class="btn" @click.once="loadQuotesCount(15)">15 Quotes are good</button>
         </footer>
       </section>
-    
+
     </div>
 
     <!-- Add loading while fetching data-->
@@ -64,7 +72,8 @@ export default {
       apiUrl: `https://thesimpsonsquoteapi.glitch.me/quotes`,
       APIQuotes: null,
       count: 3,
-      asyncState: null
+      asyncState: null,
+      direction: null
     };
   },
   methods: {
@@ -81,7 +90,9 @@ export default {
       this.fetchData(this.apiUrl, this.count);
     },
     sort(payload) {
-      this.APIQuotes= payload;
+      console.log(payload)
+      this.APIQuotes= payload.sortedQuotes;
+      this.direction = payload.direction;
     }
   },
   created() {
@@ -90,3 +101,8 @@ export default {
   }
 };
 </script>
+<style>
+.btn.active {
+  background-color: darkblue;
+}
+</style>
