@@ -8,7 +8,7 @@
         <div class="row">
           <!-- Use semantic markup: article, figure-->
           <article
-          v-for="quote in simpsons"
+          v-for="quote in localQuotes"
           :key="quote"
           class="bg-gradient-to-br from-gray-200 rounded-lg shadow w-64"
         >
@@ -32,47 +32,13 @@
 <script>
 import SortButton from './SortButton.vue';
 // fetch from https://thesimpsonsquoteapi.glitch.me/quotes
-const simpsons = [
-  {
-    quote:
-      'By chilling my loins I increase the chances of impregnating my wife.',
-    character: 'Apu Nahasapeemapetilon',
-    image:
-      'https://cdn.glitch.me/3c3ffadc-3406-4440-bb95-d40ec8fcde72/ApuNahasapeemapetilon.png',
-    characterDirection: 'Left',
-  },
-  {
-    quote:
-      'By chilling my loins I increase the chances of impregnating my wife.',
-    character: 'Apu Nahasapeemapetilon',
-    image:
-      'https://cdn.glitch.me/3c3ffadc-3406-4440-bb95-d40ec8fcde72/ApuNahasapeemapetilon.png',
-    characterDirection: 'Left',
-  },
-  {
-    quote:
-      'By chilling my loins I increase the chances of impregnating my wife.',
-    character: 'Apu Nahasapeemapetilon',
-    image:
-      'https://cdn.glitch.me/3c3ffadc-3406-4440-bb95-d40ec8fcde72/ApuNahasapeemapetilon.png',
-    characterDirection: 'Left',
-  },
-  {
-    quote:
-      'By chilling my loins I increase the chances of impregnating my wife.',
-    character: 'Apu Nahasapeemapetilon',
-    image:
-      'https://cdn.glitch.me/3c3ffadc-3406-4440-bb95-d40ec8fcde72/ApuNahasapeemapetilon.png',
-    characterDirection: 'Left',
-  },
-];
-
+import data from '../data.json'
 export default {
   name: 'Simpsons',
   components: { SortButton },
   setup() {
     return {
-      simpsons,
+      localQuotes: data
     };
   },
 };
