@@ -25,6 +25,14 @@
             </figure>
         </article>
         </div>
+
+        <!-- group buttons in a section's' footer
+        buttons are used because js is needed here-->
+        <footer class="mt-8">
+          <button class="btn" @click="loadQuotesCount(5)">5 Quotes are good</button>
+          <button class="btn" @click="loadQuotesCount(10)">10 Quotes are good</button>
+          <button class="btn" @click="loadQuotesCount(15)">15 Quotes are good</button>
+        </footer>
       </section>
   </div>
 </template>
@@ -36,7 +44,7 @@ import data from '../data.json'
 export default {
   name: 'Simpsons',
   components: { SortButton },
-  setup() {
+  data() {
     return {
       localQuotes: data,
       apiUrl: `https://thesimpsonsquoteapi.glitch.me/quotes`,
@@ -50,7 +58,10 @@ export default {
       const data = await fetch(`${api}?count=${count}`);
       const jsonData = await data.json();
       this.APIQuotes = jsonData;
-      console.log(this.APIQuotes);
+    },
+    loadQuotesCount(num) {
+      this.count = +num;
+      this.fetchData(this.apiUrl, this.count);
     }
   },
   created() {
