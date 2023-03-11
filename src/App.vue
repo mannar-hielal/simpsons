@@ -3,11 +3,9 @@ import List from './components/List.vue';
 </script>
 
 <template>
-  <List />
+  <!-- Apply container and center-->
+  <div class="container mx-auto">
+    <List />
+  </div>
 </template>
 
-<style>
-#app {
-  margin: 60px;
-}
-</style>

@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/**
+* Add global styling here to re-use them
+* In real app, move them to components stylesheet files
+* alternative to tailwind grid: flex the .row add minus margin, and apply padding to children (article)
+**/
+
+.row {
+    @apply grid md:grid-cols-2 lg:grid-cols-3 gap-4 items-center justify-items-center;
+  }
+  section{
+    @apply xl:w-3/4 mx-auto;
+  }
