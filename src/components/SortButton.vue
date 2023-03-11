@@ -1,5 +1,8 @@
 <template>
-    <button class="btn" @click="sort">-{{ text }}-</button>
+    <button 
+    class="btn" 
+    :class="[sortedQuotes ?'active': '']"
+    @click="sort">-{{ text }}-</button>
 </template>
 <script>
 // make the button work, so that it will sort according to the `direction` prop
@@ -39,3 +42,8 @@ export default {
   }
 }
 </script>
+<style>
+.btn.active {
+  background-color: darkblue;
+}
+</style>
