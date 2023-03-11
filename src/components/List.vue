@@ -8,10 +8,10 @@
         <div class="row">
           <!-- Use semantic markup: article, figure-->
           <article
-          v-for="quote in localQuotes"
+          v-for="quote in APIQuotes"
           :key="quote._id"
           class="bg-gradient-to-br from-gray-200 rounded-lg shadow w-64"
-        >
+          >
             <figure class="flex-1 flex flex-col p-8">
               <img 
               :src="quote.image"
@@ -38,8 +38,24 @@ export default {
   components: { SortButton },
   setup() {
     return {
-      localQuotes: data
+      localQuotes: data,
+      apiUrl: `https://thesimpsonsquoteapi.glitch.me/quotes`,
+      APIQuotes: null,
+      count: 3
     };
   },
+  methods: {
+    async fetchData(api, count) {
+      // axios would be easier, i used fetch because it is already integrated in vuejs
+      const data = await fetch(`${api}?count=${count}`);
+      const jsonData = await data.json();
+      this.APIQuotes = jsonData;
+      console.log(this.APIQuotes);
+    }
+  },
+  created() {
+    // upon vue instance creation, fetch the data from API
+    this.fetchData(this.apiUrl, this.count);
+  }
 };
 </script>
