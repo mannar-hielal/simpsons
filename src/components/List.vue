@@ -9,7 +9,7 @@
           <!-- Use semantic markup: article, figure-->
           <article
           v-for="quote in localQuotes"
-          :key="quote"
+          :key="quote._id"
           class="bg-gradient-to-br from-gray-200 rounded-lg shadow w-64"
         >
             <figure class="flex-1 flex flex-col p-8">
