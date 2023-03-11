@@ -1,7 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div>
-      <h1 class="text-xl mb-8">Simpson Quotes</h1>
+  <div class="text-center">
+      <h1 class="text-xl my-8">Simpson Quotes</h1>
       <!-- <SortButton direction="up" text="Sort ascending" />
       <SortButton direction="down" text="Sort descending" /> -->
       <section>
