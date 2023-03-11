@@ -2,8 +2,11 @@
 <template>
   <div class="text-center">
       <h1 class="text-xl my-8">Simpson Quotes</h1>
-      <!-- <SortButton direction="up" text="Sort ascending" />
-      <SortButton direction="down" text="Sort descending" /> -->
+
+      <section>
+        <SortButton direction="up" text="Sort ascending"/>
+        <SortButton direction="down" text="Sort descending"/>
+      </section>
       <section>
         <div class="row">
           <!-- Use semantic markup: article, figure-->
