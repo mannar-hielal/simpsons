@@ -35,9 +35,9 @@
         <!-- group buttons in a section's' footer
         buttons are used because js is needed here-->
         <footer class="mt-8">
-          <button class="btn" @click="loadQuotesCount(5)">5 Quotes are good</button>
-          <button class="btn" @click="loadQuotesCount(10)">10 Quotes are good</button>
-          <button class="btn" @click="loadQuotesCount(15)">15 Quotes are good</button>
+          <button class="btn" @click.once="loadQuotesCount(5)">5 Quotes are good</button>
+          <button class="btn" @click.once="loadQuotesCount(10)">10 Quotes are good</button>
+          <button class="btn" @click.once="loadQuotesCount(15)">15 Quotes are good</button>
         </footer>
       </section>
     
