@@ -1,6 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="text-center">
+  <div>
+    <div v-if="asyncState==='loaded'" class="text-center">
       <h1 class="text-xl my-8">Simpson Quotes</h1>
 
       <!-- the child components need the data to sort it, 
@@ -39,6 +40,14 @@
           <button class="btn" @click="loadQuotesCount(15)">15 Quotes are good</button>
         </footer>
       </section>
+    
+    </div>
+
+    <!-- Add loading while fetching data-->
+    <div v-else class="flex justify-center items-center">
+      <img src="../assets/spinner.svg" alt="spinner-img">
+      <span>Please wait..</span>
+    </div>
   </div>
 </template>
 
@@ -54,15 +63,18 @@ export default {
       localQuotes: data,
       apiUrl: `https://thesimpsonsquoteapi.glitch.me/quotes`,
       APIQuotes: null,
-      count: 3
+      count: 3,
+      asyncState: null
     };
   },
   methods: {
     async fetchData(api, count) {
+      this.asyncState = 'panding';
       // axios would be easier, i used fetch because it is already integrated in vuejs
       const data = await fetch(`${api}?count=${count}`);
       const jsonData = await data.json();
       this.APIQuotes = jsonData;
+      this.asyncState = 'loaded';
     },
     loadQuotesCount(num) {
       this.count = +num;
